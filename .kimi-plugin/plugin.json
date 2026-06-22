@@ -1,0 +1,36 @@
+{
+  "name": "weakerpowers",
+  "version": "1.0.0",
+  "description": "A beginner-friendly, guided build-a-project workflow for people brand new to coding.",
+  "author": {
+    "name": "Weakerpowers"
+  },
+  "homepage": "https://github.com/emoow/kimicode_course",
+  "license": "MIT",
+  "keywords": [
+    "beginners",
+    "brainstorming",
+    "planning",
+    "guided-build",
+    "skills",
+    "no-jargon",
+    "workflow"
+  ],
+  "skills": "./.kimi-code/skills/",
+  "sessionStart": {
+    "skill": "using-weakerpowers"
+  },
+  "skillInstructions": "Kimi Code tool mapping for Weakerpowers skills:\n\n- When a Weakerpowers skill says to ask the person something, ask one question at a time, present choices, or wait for their okay, call Kimi Code's `AskUserQuestion` tool. Keep the wording plain and jargon-free. Don't render choices as plain assistant text unless `AskUserQuestion` is unavailable or the session is in auto permission mode.\n- For `AskUserQuestion`, ask 1 question with 2-4 concrete, plain-language options when possible. Put the recommended option first and suffix its label with `(Recommended)`.\n- When a Weakerpowers skill refers to `TodoWrite`, use Kimi Code's `TodoList` tool. If a skill has a checklist, make one todo per item and work through them in order.\n- When a Weakerpowers skill refers to the `Skill` tool, use Kimi Code's native `Skill` tool.\n- Use Kimi Code's `Read`, `Write`, `Edit`, `Bash`, `Grep`, `Glob`, `FetchURL`, `WebSearch`, and MCP tools by their actual exposed names.\n- When a skill asks to search file contents, use `Grep`; when it asks to find files by path or pattern, use `Glob`; when it asks to fetch a URL, use `FetchURL`; when it asks to search the web, use `WebSearch`.\n- Weakerpowers does not use subagents, parallel agents, git worktrees, or automated tests. Do not dispatch `Agent` subagents or write test suites. Check work by looking at it and trying it the way a real person would.\n- Save work by committing quietly under the hood and calling it \"saving a snapshot\" — the person doesn't need the word \"git\" unless they ask.",
+  "interface": {
+    "displayName": "Weakerpowers",
+    "shortDescription": "A patient, jargon-free guide for building your first things with code",
+    "longDescription": "Weakerpowers walks absolute beginners through five friendly stages — brainstorm, plan, build, check, and save — turning a fuzzy idea into a finished, working thing one small step at a time. It makes the technical calls for you, explains things in plain words, and never writes code until you've seen a short plan and said yes.",
+    "developerName": "Weakerpowers",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/emoow/kimicode_course"
+  }
+}
