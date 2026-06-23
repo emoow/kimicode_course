@@ -194,42 +194,10 @@ body::before {
   font-size: 14px;
   font-weight: 400;
   color: var(--body);
-  transition: color .25s ease, text-shadow .25s ease;
-}
-/* 自下而上升起的辉光：一团柔光从导航栏底部浮现 */
-.nav__links a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  /* 锚定到导航栏底边：链接垂直居中，50% 到链接中心，再下移半个导航栏高度(32px) */
-  bottom: calc(50% - 32px);
-  width: 130%;
-  height: 22px;
-  transform: translate(-50%, 8px);
-  background: radial-gradient(
-    ellipse at bottom center,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.18) 40%,
-    transparent 75%
-  );
-  filter: blur(7px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .25s ease, transform .25s ease;
+  transition: color .25s ease;
 }
 .nav__links a:hover {
   color: var(--fg-strong);
-  text-shadow: 0 0 12px var(--glow);
-}
-.nav__links a:hover::after {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-@media (prefers-reduced-motion: reduce) {
-  /* 尊重减少动态偏好：保留辉光，去掉位移动画 */
-  .nav__links a,
-  .nav__links a::after { transition: opacity .25s ease; }
-  .nav__links a:hover::after { transform: translate(-50%, 0); }
 }
 
 /* ===== 英雄区 ===== */
