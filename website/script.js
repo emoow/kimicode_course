@@ -197,3 +197,126 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+
+// 数字织机背景：在「适合谁」区块里铺一层 canvas，画一批随机生成的正弦丝线，
+// 缓慢横向流动，并用半透明黑色逐帧叠加做出拖尾。改写自一个 React 组件，适配纯 JS + 单色风格。
+(function digitalLoom() {
+  const canvas = document.querySelector(".who__loom");
+  if (!canvas) return;
+
+  const section = canvas.closest(".who");
+  const ctx = canvas.getContext("2d");
+  if (!ctx || !section) return;
+
+  // 单色风格：白色细丝，配合页面的纯黑画布与白色辉光
+  const BG = "#000000";
+  const THREAD_COLOR = "rgba(255, 255, 255, 0.42)";
+  const THREAD_COUNT = 70;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let threads = [];
+  let animId = null;
+
+  class Thread {
+    constructor() { this.reset(true); }
+    reset(spawnAnywhere) {
+      this.x = spawnAnywhere ? Math.random() * width : 0;
+      this.y = Math.random() * height;
+      this.speed = Math.random() * 0.5 + 0.1;
+      this.amplitude = Math.random() * 20 + 10;
+      this.frequency = Math.random() * 0.02 + 0.01;
+      this.phase = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.x += this.speed;
+      if (this.x > width) { this.x = 0; this.y = Math.random() * height; }
+    }
+    draw() {
+      const startX = Math.max(this.x - 200, 0);
+      ctx.beginPath();
+      ctx.moveTo(startX, this.y + Math.sin(startX * this.frequency + this.phase) * this.amplitude);
+      for (let i = startX; i < this.x; i++) {
+        ctx.lineTo(i, this.y + Math.sin(i * this.frequency + this.phase) * this.amplitude);
+      }
+      ctx.strokeStyle = THREAD_COLOR;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+  }
+
+  function setup() {
+    const rect = canvas.getBoundingClientRect();
+    width = Math.max(1, Math.round(rect.width));
+    height = Math.max(1, Math.round(rect.height));
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    threads = Array.from({ length: THREAD_COUNT }, () => new Thread());
+
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  function renderOnce() {
+    // 静态一帧：尊重「减少动态」偏好时只画一次
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, width, height);
+    ctx.globalCompositeOperation = "lighter";
+    threads.forEach((t) => t.draw());
+  }
+
+  function animate() {
+    // 半透明黑色逐帧叠加 → 丝线留下渐隐拖尾
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.globalCompositeOperation = "lighter";
+    threads.forEach((t) => { t.update(); t.draw(); });
+
+    animId = requestAnimationFrame(animate);
+  }
+
+  function start() {
+    if (reduceMotion) { renderOnce(); return; }
+    if (animId == null) animId = requestAnimationFrame(animate);
+  }
+  function stop() {
+    if (animId != null) { cancelAnimationFrame(animId); animId = null; }
+  }
+
+  setup();
+  if (reduceMotion) {
+    renderOnce();
+  } else {
+    // 只在区块进入视口时才跑动画，省电
+    const vis = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? start() : stop()));
+    }, { threshold: 0 });
+    vis.observe(section);
+  }
+
+  // 尺寸变化时重建（区块高度会随响应式布局变化）
+  let resizeTimer = null;
+  const onResize = () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const wasRunning = animId != null;
+      stop();
+      setup();
+      if (reduceMotion) renderOnce();
+      else if (wasRunning) start();
+    }, 150);
+  };
+  window.addEventListener("resize", onResize);
+})();

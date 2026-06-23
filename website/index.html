@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- CRT 滤镜：扫描线 + 暗角 + 轻微闪烁（纯装饰，不拦截交互） -->
+  <div class="crt" aria-hidden="true"></div>
+
   <!-- 星空背景（由 script.js 生成星点） -->
   <div class="stars" aria-hidden="true"></div>
 
@@ -120,6 +123,8 @@
 
   <!-- 适合谁 -->
   <section class="section who" id="who">
+    <!-- 数字织机背景：随机丝线缓慢横向流动（纯装饰） -->
+    <canvas class="who__loom" aria-hidden="true"></canvas>
     <div class="who__inner">
       <div class="who__text">
         <span class="eyebrow">适合谁</span>
