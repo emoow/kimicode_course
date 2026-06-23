@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KimiCode · 非技术背景，也能把想法做成产品</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 星空背景（由 script.js 生成星点） -->
+  <div class="stars" aria-hidden="true"></div>
+
+  <!-- 顶部导航 -->
+  <header class="nav">
+    <a class="nav__brand" href="#top">KimiCode</a>
+    <nav class="nav__links">
+      <a href="#idea">理念</a>
+      <a href="#lessons">课程</a>
+      <a href="#how">怎么学</a>
+      <a href="#who">适合谁</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="#lessons">开始学习</a>
+  </header>
+
+  <!-- 英雄区 -->
+  <section class="hero" id="top">
+    <div class="orb orb--lavender hero__orb-a" aria-hidden="true"></div>
+    <div class="orb orb--peach hero__orb-b" aria-hidden="true"></div>
+    <div class="orb orb--sky hero__orb-c" aria-hidden="true"></div>
+    <!-- 3D 月球（仅展示底部 2/3，缓慢自转，无交互） -->
+    <div class="hero__moon" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <!-- <span class="eyebrow">面向非技术背景</span> -->
+      <h1 class="hero__title">把脑子里的想法，<br />真正做成一个产品</h1>
+      <p class="hero__sub">
+        你不需要先学编程。你有领域里的洞察、有审美、有真实的需求——把它描述清楚，
+        KimiCode 帮你做完所有技术决定。这是一门写给非技术背景的人的 Vibe Coding 课。
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#lessons">看看课程地图</a>
+        <a class="btn btn--outline" href="#idea">这是怎么回事？</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心理念 -->
+  <section class="section idea" id="idea">
+    <div class="section__head">
+      <span class="eyebrow">核心命题</span>
+      <h2 class="section__title">非技术背景的人，怎么把想法做成产品？</h2>
+      <p class="section__lead">
+        传统编程让你先背一大堆语法和术语，才敢动手。我们反过来：你说清楚想要什么，
+        KimiCode 把它做出来，你在真实的成品里理解它是怎么回事。技术选型不用你操心。
+      </p>
+    </div>
+    <div class="card-grid card-grid--3">
+      <article class="feature-card">
+        <h3>有个懂技术的向导</h3>
+        <p>我们写了一套「Weakerpowers」skill——一个友好的技术向导，替你做所有技术决定，只跟你解释「为什么」，绝不让你回答「用什么框架」。</p>
+      </article>
+      <article class="feature-card">
+        <h3>做的是真产品</h3>
+        <p>不是练习题。基础篇用一个完整的个人网站，把前端、后端、部署全部串起来，做完就是一个能用、能发给别人的真实产品。</p>
+      </article>
+      <article class="feature-card">
+        <h3>报错不可怕</h3>
+        <p>命令记不住没关系，卡住了就把报错丢给 KimiCode，让它教你修。学会和 AI 一起解决问题，比记住命令更重要。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 课程列表（按篇章分组，由 script.js 生成） -->
+  <section class="section lessons" id="lessons">
+    <div class="section__head">
+      <span class="eyebrow">课程地图</span>
+      <h2 class="section__title">从一句话上线，到做出不同形态的产品</h2>
+      <p class="section__lead">先用 90 分钟跑通一次完整闭环，再用一个个人网站项目逐层加能力，最后按兴趣做不同形态的产品。</p>
+    </div>
+    <div class="stages">
+      <!-- 篇章与课程卡片由 script.js 生成 -->
+    </div>
+    <p class="lessons__note">
+      贯穿全程的一条原则：<em>命令记不住没关系，遇到报错就截图丢给 KimiCode，让它教你修。</em>
+    </p>
+  </section>
+
+  <!-- 怎么学 -->
+  <section class="section how" id="how">
+    <div class="section__head">
+      <span class="eyebrow">怎么学</span>
+      <h2 class="section__title">拉仓库、读教程、和 KimiCode 一起做作业</h2>
+      <p class="section__lead">异步自主学习，按自己的节奏来。卡住了，公开的作业与讨论板块随时有人接住你。</p>
+    </div>
+    <div class="card-grid card-grid--4">
+      <article class="feature-card">
+        <span class="feature-card__step">01</span>
+        <h3>拉仓库到本地</h3>
+        <p>把课程仓库 git clone 下来，里面有每节配套的 skill、告诉 KimiCode 当前是课程环境的 AGENTS.md，以及每道作业的说明。</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-card__step">02</span>
+        <h3>读教程跟着做</h3>
+        <p>教学网站承载每节课的正文。跟着逐步指引走，不追求一上来就理解，先跑通，再慢慢懂原理。</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-card__step">03</span>
+        <h3>用 skill + KimiCode</h3>
+        <p>每个 skill 给 KimiCode 装上一项专项能力。用 brainstorming 细化需求，用前端 skill 出设计，向导替你拍板技术。</p>
+      </article>
+      <article class="feature-card">
+        <span class="feature-card__step">04</span>
+        <h3>发作业到社群</h3>
+        <p>把成品发到公开的作业展示板块，晒作业、互相点评、答疑。优秀作业会被定期精选展示。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 适合谁 -->
+  <section class="section who" id="who">
+    <div class="who__inner">
+      <div class="who__text">
+        <span class="eyebrow">适合谁</span>
+        <h2 class="section__title">这门课是为你准备的</h2>
+        <ul class="who__list">
+          <li>非理工科背景，没写过一行代码，但学习能力强</li>
+          <li>在自己的领域有 know-how，知道什么值得做</li>
+          <li>有想法、有需求洞察，想把它做成真东西</li>
+          <li>不打算转行做开发，想把「用 AI 实现想法」当职场技能</li>
+        </ul>
+        <a class="btn btn--primary" href="#lessons">从先导篇开始</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 结尾 CTA -->
+  <section class="cta-band">
+    <div class="orb orb--rose cta__orb" aria-hidden="true"></div>
+    <h2>把你的想法，<br />变成别人能点开的真东西</h2>
+    <a class="btn btn--primary" href="#lessons">开始先导篇第一节</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__brand">KimiCode</div>
+    <p>面向非技术背景的 Vibe Coding 课 · 先导 + 基础 + 进阶</p>
+    <p class="footer__fine">先把想法描述清楚，让 KimiCode 帮你实现。</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="moon.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
