@@ -196,20 +196,21 @@ body::before {
   color: var(--body);
   transition: color .25s ease, text-shadow .25s ease;
 }
-/* 自下而上升起的辉光：一团柔光从文字底部浮现 */
+/* 自下而上升起的辉光：一团柔光从导航栏底部浮现 */
 .nav__links a::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -10px;
+  /* 锚定到导航栏底边：链接垂直居中，50% 到链接中心，再下移半个导航栏高度(32px) */
+  bottom: calc(50% - 32px);
   width: 130%;
   height: 22px;
   transform: translate(-50%, 8px);
   background: radial-gradient(
-    ellipse at center,
+    ellipse at bottom center,
     rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.18) 35%,
-    transparent 72%
+    rgba(255, 255, 255, 0.18) 40%,
+    transparent 75%
   );
   filter: blur(7px);
   opacity: 0;

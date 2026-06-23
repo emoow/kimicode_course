@@ -95,23 +95,40 @@ const stages = [
         out: "自动化一件平时手动做的事"
       }
     ]
+  },
+  {
+    label: "进阶篇",
+    badge: "不同形态的完整项目",
+    intro: "通过 5 个进阶项目，覆盖网页、浏览器扩展、微信小程序、iOS App 与 AI Agent 系统等不同产品形态。每个项目相对独立，可以按兴趣选做。",
+    lessons: [
+      {
+        title: "进阶项目 01：定时舆情分析网页",
+        desc: "学习数据库、登录验证、定时任务、爬虫，以及官方 API 的合规使用，做一个可以定时收集和展示信息的网页产品。",
+        out: "完整舆情面板"
+      },
+      {
+        title: "进阶项目 02：Chrome 扩展",
+        desc: "学习浏览器扩展结构、content script、popup 等核心概念，做一个可以真正装进自己浏览器使用的小工具。",
+        out: "装进自己浏览器的实用小工具"
+      },
+      {
+        title: "进阶项目 03：微信小程序",
+        desc: "学习小程序结构、微信开发者工具和审核流程，完成一个可以在模拟器中跑通的小程序。",
+        out: "能跑通的小程序"
+      },
+      {
+        title: "进阶项目 04：iOS App",
+        desc: "学习 Xcode、SwiftUI、API 调用和应用签名，完成一个自己写的 iOS App。",
+        out: "自己写的 iOS App"
+      },
+      {
+        title: "进阶项目 05：AI 的自我进化",
+        desc: "学习 OpenClaw 框架、prompt 改写和反馈循环，做一个能够根据反馈持续优化自己的 Agent 系统。",
+        out: "会自我优化的 Agent 系统"
+      }
+    ]
   }
 ];
-
-// 进阶篇：不同形态的产品（6 个独立项目，按兴趣选做）。大纲未逐一展开，故以形态标签预告。
-const advanced = {
-  label: "进阶篇",
-  badge: "不同形态的产品",
-  intro: "用 6 个完整项目，覆盖不同的产品生态。每个项目独立，你可以根据自己的兴趣选做。",
-  forms: [
-    { text: "浏览器扩展" },
-    { text: "微信小程序" },
-    { text: "移动 App" },
-    { text: "数据看板" },
-    { text: "AI Agent" },
-    { text: "自动化工具" }
-  ]
-};
 
 const container = document.querySelector(".stages");
 
@@ -159,27 +176,6 @@ if (container) {
     block.appendChild(track);
     container.appendChild(block);
   });
-
-  // 渲染进阶篇预告
-  const advBlock = document.createElement("div");
-  advBlock.className = "stage";
-  advBlock.innerHTML = `
-    <div class="stage__head reveal">
-      <span class="stage__label">${advanced.label}</span>
-      <span class="stage__badge">${advanced.badge}</span>
-      <p class="stage__intro">${advanced.intro}</p>
-    </div>
-    <div class="advanced-card reveal">
-      <div class="orb orb--peach advanced-card__orb" aria-hidden="true"></div>
-      <div class="advanced-card__forms">
-        ${advanced.forms
-          .map((f) => `<span class="form-pill">${f.text}</span>`)
-          .join("")}
-      </div>
-      <p class="advanced-card__note">同一套能力，可以做成网页、扩展、小程序、App……产品形态不同，内核是相通的。按兴趣挑着做。</p>
-    </div>
-  `;
-  container.appendChild(advBlock);
 }
 
 // 给其他区块加上进场动画
