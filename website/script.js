@@ -212,7 +212,7 @@ document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   // 单色风格：白色细丝，配合页面的纯黑画布与白色辉光
   const BG = "#000000";
   const THREAD_COLOR = "rgba(255, 255, 255, 0.42)";
-  const THREAD_COUNT = 70;
+  const THREAD_COUNT = 48;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -299,11 +299,12 @@ document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   if (reduceMotion) {
     renderOnce();
   } else {
-    // 只在区块进入视口时才跑动画，省电
+    // 只在区块进入视口时才跑动画，省电；观察 canvas 本身，
+    // 当它在窄屏被 display:none 时没有布局盒，动画自然保持停止。
     const vis = new IntersectionObserver((entries) => {
       entries.forEach((e) => (e.isIntersecting ? start() : stop()));
     }, { threshold: 0 });
-    vis.observe(section);
+    vis.observe(canvas);
   }
 
   // 尺寸变化时重建（区块高度会随响应式布局变化）
