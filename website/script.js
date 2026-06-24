@@ -44,7 +44,9 @@ const stages = [
         desc: "针对文科生/非技术背景的 vibe coding 课：学习如何把脑中的想法变成产品，理解产品基本流程、AI 参与方式、仓库学习路径和社群协作方式。",
         learn: "做产品思路；学这个仓库的思路",
         out: "/",
-        prep: "能访问 GitHub"
+        prep: "能访问 GitHub",
+        href: "lessons/readme.html",
+        intro: true
       }
     ]
   },
@@ -81,35 +83,40 @@ const stages = [
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-03.html"
       },
       {
         title: "基础篇 03：接后端",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-04.html"
       },
       {
         title: "基础篇 04：部署",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-05.html"
       },
       {
         title: "基础篇 05：产品知识总结，如何从需求到产品，优秀案例拆解",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-06.html"
       },
       {
         title: "基础篇 06：如何用 KimiCode 处理开发外的事",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-07.html"
       }
     ]
   },
@@ -123,42 +130,48 @@ const stages = [
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-08.html"
       },
       {
         title: "项目 02：做一个 Chrome 扩展",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-09.html"
       },
       {
         title: "项目 03：做一个微信小程序",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-10.html"
       },
       {
         title: "项目 04：做一个 iOS APP",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-11.html"
       },
       {
         title: "项目 05：AI 的自我进化",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-12.html"
       },
       {
         title: "项目 06：部署上线与审核",
         desc: "待补充",
         learn: "待补充",
         out: "待补充",
-        prep: "待补充"
+        prep: "待补充",
+        href: "lessons/lesson-13.html"
       }
     ]
   }
@@ -189,14 +202,16 @@ if (container) {
     const numbered = stage.lessons.length > 1;
 
     stage.lessons.forEach((l, i) => {
-      lessonCount += 1;
+      const isIntro = Boolean(l.intro);
+      if (!isIntro) lessonCount += 1;
       const card = document.createElement("article");
       card.className = numbered ? "lesson-row reveal" : "lesson-row lesson-row--bare reveal";
-      card.dataset.lesson = String(lessonCount);
+      if (isIntro) card.classList.add("lesson-row--intro");
+      else card.dataset.lesson = String(lessonCount);
       card.style.transitionDelay = (i % 3) * 80 + "ms";
       const rail = numbered
         ? `<div class="lesson-row__rail">
-          <span class="lesson-row__num">${String(lessonCount).padStart(2, "0")}</span>
+          <span class="lesson-row__num">${isIntro ? "R" : String(lessonCount).padStart(2, "0")}</span>
         </div>`
         : "";
       card.innerHTML = `
@@ -211,7 +226,7 @@ if (container) {
             <div class="lesson-row__out"><span>当节产出</span><strong>${l.out}</strong></div>
             <div class="lesson-row__out"><span>实践准备/实操作业</span><strong>${l.prep}</strong></div>
           </div>
-          ${l.href ? `<a class="lesson-row__action" href="${l.href}">进入课程</a>` : `<span class="lesson-row__action lesson-row__action--disabled" aria-disabled="true">待更新</span>`}
+          ${l.href ? `<a class="lesson-row__action" href="${l.href}">${isIntro ? "阅读说明" : "进入课程"}</a>` : `<span class="lesson-row__action lesson-row__action--disabled" aria-disabled="true">待更新</span>`}
         </div>
       `;
       track.appendChild(card);
@@ -225,6 +240,7 @@ if (container) {
     const completed = getCompletedLesson();
     const nextUnlocked = Math.min(completed + 1, lessonCount);
     document.querySelectorAll(".lesson-row").forEach((row) => {
+      if (row.classList.contains("lesson-row--intro")) return;
       const lesson = Number(row.dataset.lesson);
       const action = row.querySelector(".lesson-row__action");
       const isComplete = lesson <= completed;
