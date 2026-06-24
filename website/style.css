@@ -454,7 +454,7 @@ body::before {
 .lesson-row__desc { font-size: 15px; color: var(--body); line-height: 1.6; }
 .lesson-row__meta {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin-top: 20px;
   padding-top: 16px;
@@ -489,6 +489,13 @@ body::before {
 }
 .lesson-row__action:hover {
   border-color: var(--fg);
+}
+.lesson-row__action--disabled,
+.lesson-row__action--disabled:hover {
+  cursor: default;
+  color: var(--muted);
+  background: transparent;
+  border-color: var(--hairline);
 }
 .lesson-row.is-complete .lesson-row__action {
   color: var(--on-primary);

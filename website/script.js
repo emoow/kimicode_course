@@ -35,86 +35,130 @@
 
 const stages = [
   {
-    label: "第一阶段",
-    badge: "建立信心",
-    intro: "先用最短路径做出能展示的成品，理解 prompt 为什么有效，并完成 KimiCode 基础环境准备。",
+    label: "readme",
+    badge: "学习说明",
+    intro: "先理解这门课面向谁、怎么学、会产出什么，再把仓库拉到本地开始实践。",
     lessons: [
       {
-        title: "第一节：先做一个很酷的东西",
-        desc: "用一句已验证有效的 prompt 生成 3D 可交互月球网页，再拆解 prompt 的主体、细节、交互和氛围。",
-        out: "3D 可交互月球网页",
-        prep: "无需课前准备",
+        title: "课程 readme",
+        desc: "针对文科生/非技术背景的 vibe coding 课：学习如何把脑中的想法变成产品，理解产品基本流程、AI 参与方式、仓库学习路径和社群协作方式。",
+        learn: "做产品思路；学这个仓库的思路",
+        out: "/",
+        prep: "能访问 GitHub"
+      }
+    ]
+  },
+  {
+    label: "先导篇",
+    badge: "基础环境",
+    intro: "通过第一个极简项目，完成 KimiCode、VSCode、GitHub 和本地网页的基础体验。",
+    lessons: [
+      {
+        title: "先导篇 01：学这个项目/开始做产品的基础环境&感受第一个项目",
+        desc: "用 Kimi Agent 和 Kimi Code 的一句话生成网页案例解释什么是 vibe coding，说明为什么使用 KimiCode，并完成在 VSCode 中使用 KimiCode 的基础流程。",
+        learn: "终端、KimiCode 安装与基本使用、VSCode 安装与使用、GitHub 基础使用",
+        out: "一个很简单的本地 html 网页",
+        prep: "下载安装 KimiCode、VSCode，通过 GitHub 拉仓库到本地；用一句话 prompt 写第一个本地能打开的静态网页",
         href: "lessons/lesson-01.html"
-      },
+      }
+    ]
+  },
+  {
+    label: "基础篇",
+    badge: "产品与开发基础",
+    intro: "从和 Agent 协作、产品 sense、全栈环境、后端和部署开始，逐步建立能做产品的基础能力。",
+    lessons: [
       {
-        title: "第二节：造一个你自己的简易版 Manus",
-        desc: "理解 agent = 会规划的大脑 + 一堆 skill，写 orchestration prompt，让它自己拆步骤、调能力、汇总交付物。",
-        out: "会规划并调用多个 skill 的 agent",
-        prep: "IDE + CLI 配置",
+        title: "基础篇 01：如何和 Agent 打交道",
+        desc: "做一个有基本产品 sense 的静态网页。了解产品工作的流程（非部署部分），学习如何通过 superpower 类 skill 完成 brainstorm、细化需求和前端设计。",
+        learn: "prompt、skill、agent 基本原理；产品需求 => 产品、产品体验的基本产品知识",
+        out: "一个好看的本地 html 网页",
+        prep: "理解 KimiCode 的基本原理和操作；会下载安装、使用 Skill",
         href: "lessons/lesson-02.html"
+      },
+      {
+        title: "基础篇 02：AI 时代全栈开发的基本环境",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
+      },
+      {
+        title: "基础篇 03：接后端",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
+      },
+      {
+        title: "基础篇 04：部署",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
+      },
+      {
+        title: "基础篇 05：产品知识总结，如何从需求到产品，优秀案例拆解",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
+      },
+      {
+        title: "基础篇 06：如何用 KimiCode 处理开发外的事",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
       }
     ]
   },
   {
-    label: "第二阶段",
-    badge: "工程化入门",
-    intro: "把对话里的能力搬成真正项目，接真实 API，并开始处理数据、登录、数据库和定时任务。",
+    label: "进阶篇",
+    badge: "项目实战",
+    intro: "围绕可交付项目练习：网页、扩展、小程序、iOS App、自我进化和上线审核。",
     lessons: [
       {
-        title: "第三节：把 Manus 做成真正的项目",
-        desc: "学习 Git、Node、Next.js、.env 和 API 调用，把简易 Manus 搬成一个本地可运行的网页项目。",
-        out: "接真实 API 的 Next.js 网页",
-        prep: "GitHub 账号",
-        href: "lessons/lesson-03.html"
+        title: "项目 01：定时舆情分析网页",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
       },
       {
-        title: "第四节：定时舆情分析网页",
-        desc: "优先使用官方 API 获取数据，加入数据库、登录验证和定时任务，做一个能持续更新的分析看板。",
-        out: "能登录、定时抓取、分析的看板",
-        prep: "Reddit 或 GitHub API key",
-        href: "lessons/lesson-04.html"
-      }
-    ]
-  },
-  {
-    label: "第三阶段",
-    badge: "多形态产品",
-    intro: "把 Vibe Coding 迁移到浏览器扩展、小程序、iOS App、部署上线和 Agent 自我优化。",
-    lessons: [
-      {
-        title: "第五节：做一个 Chrome 扩展",
-        desc: "学习 extension manifest、content script、popup 等核心结构，做一个能装进自己浏览器的小工具。",
-        out: "Chrome 扩展",
-        prep: "无需额外准备",
-        href: "lessons/lesson-05.html"
+        title: "项目 02：做一个 Chrome 扩展",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
       },
       {
-        title: "第六节：做一个微信小程序",
-        desc: "学习小程序结构、微信开发者工具和审核流程，完成一个能在模拟器里跑通的小程序。",
-        out: "微信小程序",
-        prep: "小程序账号",
-        href: "lessons/lesson-06.html"
+        title: "项目 03：做一个微信小程序",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
       },
       {
-        title: "第七节：Xcode 的秘密",
-        desc: "学习 iOS 项目结构、SwiftUI、API 调用和应用签名，完成一个自己写的 iOS App。",
-        out: "iOS App",
-        prep: "Mac、Xcode、Apple ID",
-        href: "lessons/lesson-07.html"
+        title: "项目 04：做一个 iOS APP",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
       },
       {
-        title: "第八节：封装与部署",
-        desc: "把前面每个项目送上线，处理环境变量、云端定时、平台配置、商店或审核流程。",
-        out: "上线作品合集",
-        prep: "各平台账号",
-        href: "lessons/lesson-08.html"
+        title: "项目 05：AI 的自我进化",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
       },
       {
-        title: "第九节：AI 的自我进化",
-        desc: "学习 OpenClaw 框架、prompt 改写、反馈循环和自我评估机制，做一个会自我优化的 agent 系统。",
-        out: "会自我优化的 agent 系统",
-        prep: "Python 环境、前两节基础",
-        href: "lessons/lesson-09.html"
+        title: "项目 06：部署上线与审核",
+        desc: "待补充",
+        learn: "待补充",
+        out: "待补充",
+        prep: "待补充"
       }
     ]
   }
@@ -163,10 +207,11 @@ if (container) {
           </div>
           <p class="lesson-row__desc">${l.desc}</p>
           <div class="lesson-row__meta">
+            <div class="lesson-row__out"><span>新学到的东西</span><strong>${l.learn}</strong></div>
             <div class="lesson-row__out"><span>当节产出</span><strong>${l.out}</strong></div>
-            <div class="lesson-row__out"><span>课前准备</span><strong>${l.prep}</strong></div>
+            <div class="lesson-row__out"><span>实践准备/实操作业</span><strong>${l.prep}</strong></div>
           </div>
-          <a class="lesson-row__action" href="${l.href}">进入课程</a>
+          ${l.href ? `<a class="lesson-row__action" href="${l.href}">进入课程</a>` : `<span class="lesson-row__action lesson-row__action--disabled" aria-disabled="true">待更新</span>`}
         </div>
       `;
       track.appendChild(card);
