@@ -33,107 +33,100 @@
 })();
 
 
-// 三个篇章。先导篇 + 基础篇用课程卡片呈现；进阶篇是按兴趣选做的形态合集，用标签呈现。
 const stages = [
   {
-    label: "README",
-    badge: "课程导读",
-    intro: "说明这门课给谁学、学完能得到什么、学什么、怎么学，并完成工具安装与本地环境配置。",
+    label: "第一阶段",
+    badge: "建立信心",
+    intro: "先用最短路径做出能展示的成品，理解 prompt 为什么有效，并完成 KimiCode 基础环境准备。",
     lessons: [
       {
-        title: "课程导读与环境配置",
-        desc: "了解课程定位、目标学员、学习方式与工具准备，克隆课程仓库，配置本地环境。",
-        out: "克隆仓库，配置本地环境"
+        title: "第一节：先做一个很酷的东西",
+        desc: "用一句已验证有效的 prompt 生成 3D 可交互月球网页，再拆解 prompt 的主体、细节、交互和氛围。",
+        out: "3D 可交互月球网页",
+        prep: "无需课前准备",
+        href: "lessons/lesson-01.html"
+      },
+      {
+        title: "第二节：造一个你自己的简易版 Manus",
+        desc: "理解 agent = 会规划的大脑 + 一堆 skill，写 orchestration prompt，让它自己拆步骤、调能力、汇总交付物。",
+        out: "会规划并调用多个 skill 的 agent",
+        prep: "IDE + CLI 配置",
+        href: "lessons/lesson-02.html"
       }
     ]
   },
   {
-    label: "先导篇",
-    badge: "为什么使用 KimiCode",
-    intro: "理解为什么已有网页版 Kimi 之后，还需要使用 KimiCode；对比网页版本与 KimiCode 的差异，并完成一个本地数据可视化的 refinement。",
+    label: "第二阶段",
+    badge: "工程化入门",
+    intro: "把对话里的能力搬成真正项目，接真实 API，并开始处理数据、登录、数据库和定时任务。",
     lessons: [
       {
-        title: "为什么有网页版我还要使用 KimiCode?",
-        desc: "对比网页版和 KimiCode 的使用场景，学习如何 refine 一个本地数据可视化项目。",
-        out: "提交一个本地代码文件，并用 autograder 调整锚点"
+        title: "第三节：把 Manus 做成真正的项目",
+        desc: "学习 Git、Node、Next.js、.env 和 API 调用，把简易 Manus 搬成一个本地可运行的网页项目。",
+        out: "接真实 API 的 Next.js 网页",
+        prep: "GitHub 账号",
+        href: "lessons/lesson-03.html"
+      },
+      {
+        title: "第四节：定时舆情分析网页",
+        desc: "优先使用官方 API 获取数据，加入数据库、登录验证和定时任务，做一个能持续更新的分析看板。",
+        out: "能登录、定时抓取、分析的看板",
+        prep: "Reddit 或 GitHub API key",
+        href: "lessons/lesson-04.html"
       }
     ]
   },
   {
-    label: "基础篇",
-    badge: "用个人网站串起完整开发流程",
-    intro: "围绕一个个人网站，从配置开发环境、和 Agent 协作、前端页面、后端能力、部署上线，到产品复盘与开发之外的自动化，建立完整的 Vibe Coding 工作流。",
+    label: "第三阶段",
+    badge: "多形态产品",
+    intro: "把 Vibe Coding 迁移到浏览器扩展、小程序、iOS App、部署上线和 Agent 自我优化。",
     lessons: [
       {
-        title: "基础篇 01：配置一个定制化的 Code 工作环境",
-        desc: "学习什么是 IDE、CLI、KimiCode 基本使用、Vibe Coding 是什么，以及完整使用流程。",
-        out: "用 bash 命令行导出一个 AI 交互 log"
+        title: "第五节：做一个 Chrome 扩展",
+        desc: "学习 extension manifest、content script、popup 等核心结构，做一个能装进自己浏览器的小工具。",
+        out: "Chrome 扩展",
+        prep: "无需额外准备",
+        href: "lessons/lesson-05.html"
       },
       {
-        title: "基础篇 02：和 Agent 打交道：做好看的个人网站前端",
-        desc: "理解 prompt、skill、agent 的基本原理，学习什么叫有产品感，并参考 awwwards、godly 等收集素材与写 HTML/CSS。",
-        out: "用 skill 细化需求，完成个人网站前端"
+        title: "第六节：做一个微信小程序",
+        desc: "学习小程序结构、微信开发者工具和审核流程，完成一个能在模拟器里跑通的小程序。",
+        out: "微信小程序",
+        prep: "小程序账号",
+        href: "lessons/lesson-06.html"
       },
       {
-        title: "基础篇 03：AI 全栈工程环境：给个人网站加后端",
-        desc: "学习 Node.js、Next.js、Git、.env、前后端分工、API 调用与数据库基础，把个人网站升级为全栈项目。",
-        out: "本地跑通 Next.js 项目，推上 GitHub，并配置环境变量"
+        title: "第七节：Xcode 的秘密",
+        desc: "学习 iOS 项目结构、SwiftUI、API 调用和应用签名，完成一个自己写的 iOS App。",
+        out: "iOS App",
+        prep: "Mac、Xcode、Apple ID",
+        href: "lessons/lesson-07.html"
       },
       {
-        title: "基础篇 04：部署上线 & 修改域名：上线个人网站",
-        desc: "学习 Vercel 部署、云端环境变量、配置域名与上线前检查清单。",
-        out: "个人网站正式上线，拿到可分享链接"
+        title: "第八节：封装与部署",
+        desc: "把前面每个项目送上线，处理环境变量、云端定时、平台配置、商店或审核流程。",
+        out: "上线作品合集",
+        prep: "各平台账号",
+        href: "lessons/lesson-08.html"
       },
       {
-        title: "基础篇 05：产品总结与案例拆解",
-        desc: "学习完整产品流程复盘、用户体验基础与案例分析方法，拆解好的个人体验并产生更多产品想法。",
-        out: "产品分析报告，更多产品 idea"
-      },
-      {
-        title: "基础篇 06：用 KimiCode 处理开发之外的事",
-        desc: "理解 agent 的通用性，把 KimiCode 用在自动化日常工作中，而不只是在写代码时使用。",
-        out: "自动化一件平时手动做的事"
-      }
-    ]
-  },
-  {
-    label: "进阶篇",
-    badge: "不同形态的完整项目",
-    intro: "通过 5 个进阶项目，覆盖网页、浏览器扩展、微信小程序、iOS App 与 AI Agent 系统等不同产品形态。每个项目相对独立，可以按兴趣选做。",
-    lessons: [
-      {
-        title: "进阶项目 01：定时舆情分析网页",
-        desc: "学习数据库、登录验证、定时任务、爬虫，以及官方 API 的合规使用，做一个可以定时收集和展示信息的网页产品。",
-        out: "完整舆情面板"
-      },
-      {
-        title: "进阶项目 02：Chrome 扩展",
-        desc: "学习浏览器扩展结构、content script、popup 等核心概念，做一个可以真正装进自己浏览器使用的小工具。",
-        out: "装进自己浏览器的实用小工具"
-      },
-      {
-        title: "进阶项目 03：微信小程序",
-        desc: "学习小程序结构、微信开发者工具和审核流程，完成一个可以在模拟器中跑通的小程序。",
-        out: "能跑通的小程序"
-      },
-      {
-        title: "进阶项目 04：iOS App",
-        desc: "学习 Xcode、SwiftUI、API 调用和应用签名，完成一个自己写的 iOS App。",
-        out: "自己写的 iOS App"
-      },
-      {
-        title: "进阶项目 05：AI 的自我进化",
-        desc: "学习 OpenClaw 框架、prompt 改写和反馈循环，做一个能够根据反馈持续优化自己的 Agent 系统。",
-        out: "会自我优化的 Agent 系统"
+        title: "第九节：AI 的自我进化",
+        desc: "学习 OpenClaw 框架、prompt 改写、反馈循环和自我评估机制，做一个会自我优化的 agent 系统。",
+        out: "会自我优化的 agent 系统",
+        prep: "Python 环境、前两节基础",
+        href: "lessons/lesson-09.html"
       }
     ]
   }
 ];
 
 const container = document.querySelector(".stages");
+const progressKey = "kimicode-course-completed-lesson";
+const getCompletedLesson = () => Number(localStorage.getItem(progressKey) || "0");
 
 // 渲染先导篇 + 基础篇
 if (container) {
+  let lessonCount = 0;
   stages.forEach((stage, si) => {
     const block = document.createElement("div");
     block.className = "stage";
@@ -152,12 +145,14 @@ if (container) {
     const numbered = stage.lessons.length > 1;
 
     stage.lessons.forEach((l, i) => {
+      lessonCount += 1;
       const card = document.createElement("article");
       card.className = numbered ? "lesson-row reveal" : "lesson-row lesson-row--bare reveal";
+      card.dataset.lesson = String(lessonCount);
       card.style.transitionDelay = (i % 3) * 80 + "ms";
       const rail = numbered
         ? `<div class="lesson-row__rail">
-          <span class="lesson-row__num">${String(i + 1).padStart(2, "0")}</span>
+          <span class="lesson-row__num">${String(lessonCount).padStart(2, "0")}</span>
         </div>`
         : "";
       card.innerHTML = `
@@ -167,7 +162,11 @@ if (container) {
             <h3>${l.title}</h3>
           </div>
           <p class="lesson-row__desc">${l.desc}</p>
-          <div class="lesson-row__out"><span>当节产出</span><strong>${l.out}</strong></div>
+          <div class="lesson-row__meta">
+            <div class="lesson-row__out"><span>当节产出</span><strong>${l.out}</strong></div>
+            <div class="lesson-row__out"><span>课前准备</span><strong>${l.prep}</strong></div>
+          </div>
+          <a class="lesson-row__action" href="${l.href}">进入课程</a>
         </div>
       `;
       track.appendChild(card);
@@ -176,10 +175,40 @@ if (container) {
     block.appendChild(track);
     container.appendChild(block);
   });
+
+  const applyUnlockState = () => {
+    const completed = getCompletedLesson();
+    const nextUnlocked = Math.min(completed + 1, lessonCount);
+    document.querySelectorAll(".lesson-row").forEach((row) => {
+      const lesson = Number(row.dataset.lesson);
+      const action = row.querySelector(".lesson-row__action");
+      const isComplete = lesson <= completed;
+      const isLocked = lesson > nextUnlocked;
+
+      row.classList.toggle("is-complete", isComplete);
+      row.classList.toggle("is-locked", isLocked);
+
+      if (action) {
+        action.textContent = isComplete ? "复习课程" : isLocked ? "待解锁" : "进入课程";
+        action.setAttribute("aria-disabled", String(isLocked));
+      }
+    });
+  };
+
+  applyUnlockState();
+
+  container.addEventListener("click", (event) => {
+    const action = event.target.closest(".lesson-row__action");
+    if (!action) return;
+    const row = action.closest(".lesson-row");
+    if (row?.classList.contains("is-locked")) {
+      event.preventDefault();
+    }
+  });
 }
 
 // 给其他区块加上进场动画
-document.querySelectorAll(".feature-card, .section__head, .who__text, .who__quote, .cta-band > *:not(.orb)")
+document.querySelectorAll(".feature-card, .outcome-card, .section__head, .who__text, .who__quote, .cta-band > *:not(.orb)")
   .forEach((el) => el.classList.add("reveal"));
 
 // 滚动进场
